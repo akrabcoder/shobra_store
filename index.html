@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>شبرا ستور | Shubra Store</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;800&family=Cinzel:wght@500;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#070707;--bg2:#0d0d0d;--card:#111;--card2:#161616;
+  --gold:#c9a227;--gold-2:#f0d17a;--gold-soft:rgba(201,162,39,.15);
+  --line:rgba(201,162,39,.22);--text:#f4efe4;--muted:#948f84;
+  --radius:14px;--max:1180px;
+}
+html{scroll-behavior:smooth}
+html[lang="ar"] body{font-family:'Cairo',system-ui,sans-serif}
+html[lang="en"] body{font-family:'Jost',system-ui,sans-serif}
+html[lang="ar"] h1,html[lang="ar"] h2,html[lang="ar"] h3{font-family:'Amiri',serif}
+html[lang="en"] h1,html[lang="en"] h2,html[lang="en"] h3{font-family:'Cinzel',serif}
+body{background:var(--bg);color:var(--text);line-height:1.65;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+.container{width:min(100% - 40px,var(--max));margin-inline:auto}
+.hidden{display:none!important}
+
+/* HEADER */
+.site-header{position:sticky;top:0;z-index:50;background:rgba(7,7,7,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 0}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-mark{width:46px;height:46px;border-radius:50%;border:1px solid var(--gold);display:grid;place-items:center;font-family:'Cinzel',serif;font-weight:700;color:var(--gold);font-size:1.05rem;letter-spacing:1px;background:radial-gradient(circle at 30% 20%,rgba(201,162,39,.25),transparent 65%)}
+.logo-text{display:flex;flex-direction:column;line-height:1.15}
+.logo-text b{font-family:'Amiri',serif;font-size:1.15rem;letter-spacing:.5px}
+.logo-text small{font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:3px;color:var(--gold)}
+.nav{display:flex;gap:26px}
+.nav a{text-decoration:none;font-size:.92rem;color:var(--muted);transition:.2s;position:relative}
+.nav a:hover{color:var(--gold)}
+.header-actions{display:flex;align-items:center;gap:10px}
+.lang-btn{background:transparent;border:1px solid var(--line);color:var(--gold);padding:8px 16px;border-radius:8px;cursor:pointer;font:inherit;font-size:.85rem;font-weight:600;transition:.2s}
+.lang-btn:hover{background:var(--gold);color:#000}
+@media(max-width:860px){.nav{display:none}}
+
+/* HERO */
+.hero{min-height:88vh;display:grid;place-items:center;text-align:center;position:relative;padding:80px 0;background:
+  radial-gradient(circle at 50% 0%,rgba(201,162,39,.14),transparent 60%),
+  radial-gradient(circle at 50% 100%,rgba(201,162,39,.07),transparent 55%)}
+.hero-kicker{letter-spacing:6px;font-size:.72rem;color:var(--gold);text-transform:uppercase;margin-bottom:18px}
+.hero h1{font-size:clamp(2.4rem,6vw,4.4rem);line-height:1.15;margin-bottom:18px}
+.hero h1 span{background:linear-gradient(120deg,var(--gold-2),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);max-width:520px;margin:0 auto 34px}
+.hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 30px;border-radius:10px;border:1px solid var(--gold);background:transparent;color:var(--gold);font:inherit;font-weight:600;cursor:pointer;transition:.25s;text-decoration:none;font-size:.95rem}
+.btn:hover{background:var(--gold);color:#000}
+.btn-solid{background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#000;border:none}
+.btn-solid:hover{filter:brightness(1.08)}
+.btn-ghost{border-color:#2a2a2a;color:var(--muted)}
+.btn-ghost:hover{background:#1a1a1a;color:var(--text)}
+.btn-sm{padding:8px 16px;font-size:.82rem;border-radius:8px}
+.link-btn{background:none;border:none;color:var(--muted);cursor:pointer;font:inherit;font-size:.82rem;text-decoration:underline;text-underline-offset:3px}
+.link-btn:hover{color:var(--gold)}
+
+/* SECTIONS */
+.section{padding:90px 0}
+.section.alt{background:var(--bg2)}
+.section-head{text-align:center;margin-bottom:46px}
+.section-head h2{font-size:clamp(1.8rem,4vw,2.7rem);margin-bottom:8px}
+.section-head h2 span{color:var(--gold)}
+.section-head p{color:var(--muted);max-width:560px;margin-inline:auto;font-size:.95rem}
+.divider{width:64px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:16px auto 0}
+
+/* FILTERS */
+.filters{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:38px}
+.chip{padding:9px 22px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer;font:inherit;font-size:.85rem;transition:.22s}
+.chip:hover{color:var(--gold);border-color:var(--gold)}
+.chip.active{background:var(--gold);color:#000;border-color:var(--gold);font-weight:700}
+
+/* GRID & CARDS */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:22px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:.3s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-5px);border-color:var(--gold);box-shadow:0 22px 44px -22px rgba(201,162,39,.55)}
+.card-img{aspect-ratio:3/4;background:#1a1a1a center/cover no-repeat;position:relative}
+.badge{position:absolute;top:12px;inset-inline-start:12px;background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#000;font-weight:800;font-size:.7rem;padding:5px 11px;border-radius:999px;letter-spacing:.5px}
+.card-body{padding:16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card-title{font-size:1.02rem;font-weight:700}
+.card-desc{color:var(--muted);font-size:.8rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card-sizes{color:#6f6a61;font-size:.74rem;letter-spacing:.4px}
+.card-price{display:flex;align-items:center;gap:9px;margin-top:auto;padding-top:10px}
+.price{color:var(--gold);font-weight:800;font-size:1.08rem}
+.price-old{color:#5c5850;text-decoration:line-through;font-size:.82rem}
+.btn-order{display:block;text-align:center;background:transparent;border:1px solid var(--gold);color:var(--gold);padding:10px;border-radius:8px;font-weight:600;cursor:pointer;transition:.25s;text-decoration:none;font-size:.85rem;margin-top:10px}
+.btn-order:hover{background:var(--gold);color:#000}
+.empty{text-align:center;color:var(--muted);grid-column:1/-1;padding:50px 0}
+
+/* ABOUT / CONTACT */
+.about-wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center}
+@media(max-width:820px){.about-wrap{grid-template-columns:1fr}}
+.about-text p{color:var(--muted);margin-bottom:16px}
+.about-text h2{font-size:clamp(1.8rem,3.5vw,2.5rem);margin-bottom:14px}
+.about-text h2 span{color:var(--gold)}
+.about-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:32px;display:flex;flex-direction:column;gap:20px}
+.info-row{display:flex;gap:14px;align-items:flex-start}
+.info-icon{width:42px;height:42px;border-radius:10px;background:var(--gold-soft);border:1px solid var(--line);display:grid;place-items:center;font-size:1.1rem;flex-shrink:0}
+.info-row b{display:block;font-size:.78rem;color:var(--gold);letter-spacing:1px;text-transform:uppercase;margin-bottom:2px}
+.info-row span{color:var(--muted);font-size:.9rem}
+
+/* FOOTER */
+.site-footer{border-top:1px solid var(--line);padding:46px 0 30px;text-align:center;background:var(--bg2)}
+.footer-logo{font-family:'Amiri',serif;font-size:1.4rem;color:var(--gold);margin-bottom:6px}
+.footer-sub{color:var(--muted);font-size:.82rem;letter-spacing:2px;font-family:'Cinzel',serif;margin-bottom:22px}
+.footer-links{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin-bottom:22px;font-size:.88rem}
+.footer-links a{text-decoration:none;color:var(--muted);transition:.2s}
+.footer-links a:hover{color:var(--gold)}
+.footer-bottom{color:#5c5850;font-size:.78rem;border-top:1px solid #1a1a1a;padding-top:20px;display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
+
+/* MODAL */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.78);backdrop-filter:blur(7px);display:none;place-items:center;z-index:120;padding:20px}
+.modal.open{display:grid}
+.modal-box{width:min(430px,100%);background:var(--card);border:1px solid var(--line);border-radius:18px;padding:34px}
+.modal-box h3{text-align:center;margin-bottom:6px;font-size:1.4rem}
+.modal-box p.sub{text-align:center;color:var(--muted);font-size:.85rem;margin-bottom:24px}
+.err{color:#e05c5c;font-size:.82rem;margin-top:10px;text-align:center;min-height:18px}
+
+/* FORMS */
+.field{margin-bottom:15px}
+label{display:block;font-size:.8rem;color:var(--muted);margin-bottom:6px;letter-spacing:.3px}
+input,select,textarea{width:100%;background:#0b0b0b;border:1px solid #262626;color:var(--text);padding:11px 13px;border-radius:9px;font:inherit;font-size:.9rem;outline:none;transition:.2s}
+input:focus,select:focus,textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-soft)}
+textarea{resize:vertical;min-height:72px}
+.check{display:flex;align-items:center;gap:10px;color:var(--text);font-size:.88rem;cursor:pointer;margin-bottom:15px}
+.check input{width:auto;accent-color:var(--gold)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:520px){.row2{grid-template-columns:1fr}}
+
+/* ADMIN PANEL */
+.admin-panel{position:fixed;inset:0;background:var(--bg);z-index:100;overflow-y:auto;display:none;padding:26px 0}
+.admin-panel.open{display:block}
+.admin-head{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-bottom:20px;border-bottom:1px solid var(--line);margin-bottom:26px;flex-wrap:wrap}
+.admin-head h2{font-size:1.5rem}
+.admin-tabs{display:flex;gap:10px;margin-bottom:28px;flex-wrap:wrap}
+.admin-tab{padding:10px 22px;border-radius:9px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer;font:inherit;font-size:.88rem;transition:.2s}
+.admin-tab.active{background:var(--gold);color:#000;border-color:var(--gold);font-weight:700}
+.admin-grid{display:grid;grid-template-columns:380px 1fr;gap:30px;align-items:start}
+@media(max-width:900px){.admin-grid{grid-template-columns:1fr}}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+.panel h3{font-size:1.05rem;margin-bottom:18px;color:var(--gold)}
+.admin-item{display:flex;align-items:center;gap:14px;padding:12px;border:1px solid #1c1c1c;border-radius:10px;margin-bottom:10px;transition:.2s}
+.admin-item:hover{border-color:var(--line)}
+.admin-thumb{width:52px;height:66px;border-radius:6px;background:#1a1a1a center/cover no-repeat;flex-shrink:0}
+.admin-item-info{flex:1;min-width:0}
+.admin-item-info b{display:block;font-size:.9rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.admin-item-info small{color:var(--gold);font-size:.8rem}
+.admin-item-actions{display:flex;gap:6px}
+.icon-btn{width:34px;height:34px;border-radius:8px;border:1px solid #262626;background:transparent;color:var(--muted);cursor:pointer;display:grid;place-items:center;transition:.2s;font-size:.9rem}
+.icon-btn:hover{border-color:var(--gold);color:var(--gold)}
+.icon-btn.danger:hover{border-color:#e05c5c;color:#e05c5c}
+.preview{width:100%;height:150px;border-radius:10px;background:#0b0b0b center/cover no-repeat;border:1px dashed #2a2a2a;margin-bottom:10px;display:grid;place-items:center;color:#4a4a4a;font-size:.8rem}
+.saved-msg{color:#4ade80;font-size:.82rem;text-align:center;min-height:18px;margin-top:10px}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="#home" class="logo">
+      <span class="logo-mark">SS</span>
+      <span class="logo-text">
+        <b>شبرا ستور</b>
+        <small>SHUBRA STORE</small>
+      </span>
+    </a>
+    <nav class="nav">
+      <a href="#home" data-i18n="nav_home">الرئيسية</a>
+      <a href="#shop" data-i18n="nav_shop">المتجر</a>
+      <a href="#offers" data-i18n="nav_offers">العروض</a>
+      <a href="#about" data-i18n="nav_about">عن المحل</a>
+      <a href="#contact" data-i18n="nav_contact">تواصل</a>
+    </nav>
+    <div class="header-actions">
+      <button class="lang-btn" id="langBtn">EN</button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-kicker" data-i18n="hero_kicker">الحي 16 · العاشر من رمضان</div>
+    <h1><span data-i18n="hero_title">الأناقة تبدأ من تفصيلة</span></h1>
+    <p data-i18n="hero_sub">هدوم وكوتشيات مختارة بعناية — جودة عالية وأسعار تستاهل. اطلب دلوقتي واستلم من المحل أو توصيل داخل المدينة.</p>
+    <div class="hero-cta">
+      <a href="#shop" class="btn btn-solid" data-i18n="hero_cta_shop">تسوق الآن</a>
+      <a href="#contact" class="btn" data-i18n="hero_cta_wa">تواصل واتساب</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SHOP ============ -->
+<section class="section" id="shop">
+  <div class="container">
+    <div class="section-head">
+      <h2><span data-i18n="shop_title">المتجر</span></h2>
+      <div class="divider"></div>
+      <p data-i18n="shop_sub">كل اللي تحتاجه من هدوم وكوتشيات في مكان واحد</p>
+    </div>
+    <div class="filters" id="filters">
+      <button class="chip active" data-filter="all" data-i18n="filter_all">الكل</button>
+      <button class="chip" data-filter="clothes" data-i18n="filter_clothes">هدوم</button>
+      <button class="chip" data-filter="shoes" data-i18n="filter_shoes">كوتشيات</button>
+      <button class="chip" data-filter="accessories" data-i18n="filter_accessories">إكسسوارات</button>
+    </div>
+    <div class="grid" id="productGrid"></div>
+  </div>
+</section>
+
+<!-- ============ OFFERS ============ -->
+<section class="section alt" id="offers">
+  <div class="container">
+    <div class="section-head">
+      <h2><span data-i18n="offers_title">العروض</span></h2>
+      <div class="divider"></div>
+      <p data-i18n="offers_sub">عروض محدودة — الحق قبل ما تخلص</p>
+    </div>
+    <div class="grid" id="offersGrid"></div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="section" id="about">
+  <div class="container about-wrap">
+    <div class="about-text">
+      <h2><span data-i18n="about_title">عن شبرا ستور</span></h2>
+      <p data-i18n="about_p1">شبرا ستور محل هدوم وكوتشيات في الحي 16 بمدينة العاشر من رمضان. بدأنا بفكرة بسيطة: إن كل واحد يستاهل يلبس حلو بسعر معقول.</p>
+      <p data-i18n="about_p2">بنختار كل قطعة بعناية، وبنحرص إن الجودة تكون على قد السعر. عندنا ستايلات لكل الأذواق — كلاسيك، كاجوال، وستريت.</p>
+      <a href="#shop" class="btn" data-i18n="about_cta">شوف الجديد</a>
+    </div>
+    <div class="about-card" id="contact">
+      <div class="info-row">
+        <div class="info-icon">📍</div>
+        <div><b data-i18n="contact_address_lbl">العنوان</b><span id="contactAddress">—</span></div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🕐</div>
+        <div><b data-i18n="contact_hours_lbl">المواعيد</b><span id="contactHours">—</span></div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📞</div>
+        <div><b data-i18n="contact_phone_lbl">الهاتف</b><span id="contactPhone">—</span></div>
+      </div>
+      <a href="#" id="contactWaBtn" class="btn btn-solid" target="_blank" rel="noopener" data-i18n="contact_wa_btn">اطلب على واتساب</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-logo">شبرا ستور</div>
+    <div class="footer-sub">SHUBRA STORE</div>
+    <div class="footer-links">
+      <a href="#shop" data-i18n="nav_shop">المتجر</a>
+      <a href="#offers" data-i18n="nav_offers">العروض</a>
+      <a href="#about" data-i18n="nav_about">عن المحل</a>
+      <a href="#contact" data-i18n="nav_contact">تواصل</a>
+    </div>
+    <div class="footer-bottom">
+      <span data-i18n="footer_rights">© 2026 شبرا ستور — كل الحقوق محفوظة</span>
+      <button class="link-btn" id="ownerLoginBtn" data-i18n="footer_admin">دخول المالك</button>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ LOGIN MODAL ============ -->
+<div class="modal" id="loginModal">
+  <div class="modal-box">
+    <h3 data-i18n="login_title">دخول المالك</h3>
+    <p class="sub" data-i18n="login_sub">ادخل كلمة المرور للوصول للوحة التحكم</p>
+    <div class="field">
+      <label data-i18n="login_pass">كلمة المرور</label>
+      <input type="password" id="passInput" placeholder="••••••••" />
+    </div>
+    <button class="btn btn-solid" id="loginSubmit" style="width:100%" data-i18n="login_btn">دخول</button>
+    <div class="err" id="loginErr"></div>
+    <div style="text-align:center;margin-top:14px">
+      <button class="link-btn" id="loginCancel" data-i18n="login_cancel">إلغاء</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ ADMIN PANEL ============ -->
+<div class="admin-panel" id="adminPanel">
+  <div class="container">
+    <div class="admin-head">
+      <h2><span data-i18n="admin_title">لوحة التحكم</span></h2>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn btn-ghost btn-sm" id="adminLogout" data-i18n="admin_logout">خروج</button>
+      </div>
+    </div>
+
+    <div class="admin-tabs">
+      <button class="admin-tab active" data-tab="products" data-i18n="admin_tab_products">المنتجات</button>
+      <button class="admin-tab" data-tab="settings" data-i18n="admin_tab_settings">الإعدادات</button>
+    </div>
+
+    <!-- PRODUCTS TAB -->
+    <div id="tab-products">
+      <div class="admin-grid">
+        <div class="panel">
+          <h3 id="formTitle" data-i18n="form_add_title">إضافة منتج جديد</h3>
+          <form id="productForm">
+            <input type="hidden" id="editId" />
+            <div class="field">
+              <label data-i18n="form_name_ar">الاسم بالعربي</label>
+              <input id="f_nameAr" required />
+            </div>
+            <div class="field">
+              <label data-i18n="form_name_en">الاسم بالإنجليزي</label>
+              <input id="f_nameEn" />
+            </div>
+            <div class="row2">
+              <div class="field">
+                <label data-i18n="form_price">السعر (ج.م)</label>
+                <input id="f_price" type="number" min="0" step="1" required />
+              </div>
+              <div class="field">
+                <label data-i18n="form_old_price">السعر قبل الخصم</label>
+                <input id="f_oldPrice" type="number" min="0" step="1" />
+              </div>
+            </div>
+            <div class="field">
+              <label data-i18n="form_category">الفئة</label>
+              <select id="f_category">
+                <option value="clothes" data-i18n="filter_clothes">هدوم</option>
+                <option value="shoes" data-i18n="filter_shoes">كوتشيات</option>
+                <option value="accessories" data-i18n="filter_accessories">إكسسوارات</option>
+              </select>
+            </div>
+            <div class="field">
+              <label data-i18n="form_sizes">المقاسات (افصل بفاصلة)</label>
+              <input id="f_sizes" placeholder="M, L, XL, 42, 43" />
+            </div>
+            <div class="field">
+              <label data-i18n="form_image">رابط الصورة</label>
+              <input id="f_image" placeholder="https://..." />
+            </div>
+            <div class="field">
+              <label data-i18n="form_upload">أو ارفع صورة من جهازك</label>
+              <input type="file" id="f_file" accept="image/*" />
+            </div>
+            <div class="preview" id="imgPreview" data-i18n="form_preview">معاينة الصورة</div>
+            <div class="field">
+              <label data-i18n="form_desc_ar">الوصف بالعربي</label>
+              <textarea id="f_descAr"></textarea>
+            </div>
+            <div class="field">
+              <label data-i18n="form_desc_en">الوصف بالإنجليزي</label>
+              <textarea id="f_descEn"></textarea>
+            </div>
+            <label class="check">
+              <input type="checkbox" id="f_isOffer" />
+              <span data-i18n="form_offer">منتج في العروض</span>
+            </label>
+            <div style="display:flex;gap:10px">
+              <button type="submit" class="btn btn-solid" style="flex:1" id="formSubmit" data-i18n="form_add_btn">إضافة المنتج</button>
+              <button type="button" class="btn btn-ghost" id="formReset" data-i18n="form_reset">مسح</button>
+            </div>
+            <div class="saved-msg" id="saveMsg"></div>
+          </form>
+        </div>
+
+        <div class="panel">
+          <h3 data-i18n="list_title">المنتجات الحالية</h3>
+          <div id="adminList"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SETTINGS TAB -->
+    <div id="tab-settings" class="hidden">
+      <div class="panel" style="max-width:620px;margin-inline:auto">
+        <h3 data-i18n="settings_title">إعدادات المحل</h3>
+        <div class="field">
+          <label data-i18n="settings_whatsapp">رقم واتساب (بصيغة دولية بدون +)</label>
+          <input id="s_whatsapp" placeholder="201000000000" />
+        </div>
+        <div class="field">
+          <label data-i18n="settings_phone">رقم الهاتف للعرض</label>
+          <input id="s_phone" placeholder="+20 100 000 0000" />
+        </div>
+        <div class="field">
+          <label data-i18n="settings_address_ar">العنوان بالعربي</label>
+          <input id="s_addressAr" />
+        </div>
+        <div class="field">
+          <label data-i18n="settings_address_en">العنوان بالإنجليزي</label>
+          <input id="s_addressEn" />
+        </div>
+        <div class="field">
+          <label data-i18n="settings_hours_ar">المواعيد بالعربي</label>
+          <input id="s_hoursAr" />
+        </div>
+        <div class="field">
+          <label data-i18n="settings_hours_en">المواعيد بالإنجليزي</label>
+          <input id="s_hoursEn" />
+        </div>
+        <div class="field">
+          <label data-i18n="settings_pass">كلمة مرور لوحة التحكم</label>
+          <input id="s_pass" type="text" />
+        </div>
+        <button class="btn btn-solid" id="settingsSave" style="width:100%" data-i18n="settings_save">حفظ الإعدادات</button>
+        <div class="saved-msg" id="settingsMsg"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* =====================================================
+   شبرا ستور — المنطق الكامل
+   ===================================================== */
+const LS_P = 'shubra_products_v1';
+const LS_S = 'shubra_settings_v1';
+const LS_L = 'shubra_lang';
+const SS_A = 'shubra_admin_session';
+
+const DEFAULT_SETTINGS = {
+  whatsapp: '201000000000',
+  phone: '+20 100 000 0000',
+  addressAr: 'الحي 16 – مدينة العاشر من رمضان – الشرقية',
+  addressEn: 'Hay 16 – 10th of Ramadan City – Egypt',
+  hoursAr: 'يوميًا من 2 عصرًا حتى 11 مساءً',
+  hoursEn: 'Daily 2 PM – 11 PM',
+  password: 'shubra2026'
+};
+
+const DEFAULT_PRODUCTS = [
+  { id:'p1', nameAr:'قميص كلاسيك أسود', nameEn:'Classic Black Shirt', price:650, oldPrice:800,
+    category:'clothes', sizes:'M, L, XL, XXL',
+    image:'https://picsum.photos/seed/shubra-shirt/600/800',
+    descAr:'قميص قطن فاخر بقصة مريحة، مناسب للشغل والخروج.',
+    descEn:'Premium cotton shirt with a comfortable fit.', isOffer:true },
+  { id:'p2', nameAr:'تيشيرت أوفر سايز', nameEn:'Oversized Tee', price:320, oldPrice:0,
+    category:'clothes', sizes:'M, L, XL',
+    image:'https://picsum.photos/seed/shubra-tee/600/800',
+    descAr:'تيشيرت قطن ثقيل بستايل أوفر سايز.',
+    descEn:'Heavyweight cotton oversized tee.', isOffer:false },
+  { id:'p3', nameAr:'كوتشي سنيكرز أبيض', nameEn:'White Sneakers', price:890, oldPrice:1100,
+    category:'shoes', sizes:'40, 41, 42, 43, 44',
+    image:'https://picsum.photos/seed/shubra-shoe/600/800',
+    descAr:'كوتشي سنيكرز خفيف ومريح للاستخدام اليومي.',
+    descEn:'Lightweight comfortable sneakers for daily wear.', isOffer:true },
+  { id:'p4', nameAr:'هودي شتوي', nameEn:'Winter Hoodie', price:750, oldPrice:0,
+    category:'clothes', sizes:'M, L, XL, XXL',
+    image:'https://picsum.photos/seed/shubra-hoodie/600/800',
+    descAr:'هودي قطيفة دافئ بخامة عالية الجودة.',
+    descEn:'Warm fleece hoodie made from premium fabric.', isOffer:false },
+  { id:'p5', nameAr:'حزام جلد طبيعي', nameEn:'Leather Belt', price:280, oldPrice:350,
+    category:'accessories', sizes:'100, 110, 120',
+    image:'https://picsum.photos/seed/shubra-belt/600/800',
+    descAr:'حزام جلد طبيعي بتصميم كلاسيكي.',
+    descEn:'Classic genuine leather belt.', isOffer:false },
+  { id:'p6', nameAr:'جاكيت جينز', nameEn:'Denim Jacket', price:980, oldPrice:0,
+    category:'clothes', sizes:'M, L, XL',
+    image:'https://picsum.photos/seed/shubra-jacket/600/800',
+    descAr:'جاكيت جينز بقصة عصرية وخامة متينة.',
+    descEn:'Denim jacket with a modern cut and durable fabric.', isOffer:false }
+];
+
+/* ---------- I18N ---------- */
+const I18N = {
+  ar: {
+    nav_home:'الرئيسية', nav_shop:'المتجر', nav_offers:'العروض', nav_about:'عن المحل', nav_contact:'تواصل',
+    hero_kicker:'الحي 16 · العاشر من رمضان',
+    hero_title:'الأناقة تبدأ من تفصيلة',
+    hero_sub:'هدوم وكوتشيات مختارة بعناية — جودة عالية وأسعار تستاهل. اطلب دلوقتي واستلم من المحل أو توصيل داخل المدينة.',
+    hero_cta_shop:'تسوق الآن', hero_cta_wa:'تواصل واتساب',
+    shop_title:'المتجر', shop_sub:'كل اللي تحتاجه من هدوم وكوتشيات في مكان واحد',
+    filter_all:'الكل', filter_clothes:'هدوم', filter_shoes:'كوتشيات', filter_accessories:'إكسسوارات',
+    offers_title:'العروض', offers_sub:'عروض محدودة — الحق قبل ما تخلص',
+    about_title:'عن شبرا ستور',
+    about_p1:'شبرا ستور محل هدوم وكوتشيات في الحي 16 بمدينة العاشر من رمضان. بدأنا بفكرة بسيطة: إن كل واحد يستاهل يلبس حلو بسعر معقول.',
+    about_p2:'بنختار كل قطعة بعناية، وبنحرص إن الجودة تكون على قد السعر. عندنا ستايلات لكل الأذواق — كلاسيك، كاجوال، وستريت.',
+    about_cta:'شوف الجديد',
+    contact_address_lbl:'العنوان', contact_hours_lbl:'المواعيد', contact_phone_lbl:'الهاتف',
+    contact_wa_btn:'اطلب على واتساب',
+    footer_rights:'© 2026 شبرا ستور — كل الحقوق محفوظة', footer_admin:'دخول المالك',
+    login_title:'دخول المالك', login_sub:'ادخل كلمة المرور للوصول للوحة التحكم',
+    login_pass:'كلمة المرور', login_btn:'دخول', login_cancel:'إلغاء',
+    admin_title:'لوحة التحكم', admin_logout:'خروج',
+    admin_tab_products:'المنتجات', admin_tab_settings:'الإعدادات',
+    form_add_title:'إضافة منتج جديد', form_edit_title:'تعديل المنتج',
+    form_name_ar:'الاسم بالعربي', form_name_en:'الاسم بالإنجليزي',
+    form_price:'السعر (ج.م)', form_old_price:'السعر قبل الخصم', form_category:'الفئة',
+    form_sizes:'المقاسات (افصل بفاصلة)', form_image:'رابط الصورة', form_upload:'أو ارفع صورة من جهازك',
+    form_preview:'معاينة الصورة', form_desc_ar:'الوصف بالعربي', form_desc_en:'الوصف بالإنجليزي',
+    form_offer:'منتج في العروض', form_add_btn:'إضافة المنتج', form_update_btn:'تحديث المنتج', form_reset:'مسح',
+    list_title:'المنتجات الحالية',
+    settings_title:'إعدادات المحل', settings_whatsapp:'رقم واتساب (بصيغة دولية بدون +)',
+    settings_phone:'رقم الهاتف للعرض', settings_address_ar:'العنوان بالعربي', settings_address_en:'العنوان بالإنجليزي',
+    settings_hours_ar:'المواعيد بالعربي', settings_hours_en:'المواعيد بالإنجليزي',
+    settings_pass:'كلمة مرور لوحة التحكم', settings_save:'حفظ الإعدادات', settings_saved:'تم حفظ الإعدادات ✓',
+    empty_products:'مفيش منتجات في القسم ده لسه.', empty_offers:'مفيش عروض حاليًا — تابعنا قريب.',
+    order_btn:'اطلب واتساب', badge_offer:'عرض', currency:'ج.م',
+    confirm_delete:'متأكد إنك عايز تحذف المنتج ده؟', login_err:'كلمة المرور غلط', saved:'تم الحفظ ✓'
+  },
+  en: {
+    nav_home:'Home', nav_shop:'Shop', nav_offers:'Offers', nav_about:'About', nav_contact:'Contact',
+    hero_kicker:'Hay 16 · 10th of Ramadan',
+    hero_title:'Elegance is in the details',
+    hero_sub:'Carefully selected clothing and shoes — premium quality at fair prices. Order now and pick up or get local delivery.',
+    hero_cta_shop:'Shop Now', hero_cta_wa:'WhatsApp Us',
+    shop_title:'Shop', shop_sub:'Everything you need from clothes to shoes in one place',
+    filter_all:'All', filter_clothes:'Clothes', filter_shoes:'Shoes', filter_accessories:'Accessories',
+    offers_title:'Offers', offers_sub:'Limited offers — grab them before they are gone',
+    about_title:'About Shubra Store',
+    about_p1:'Shubra Store is a clothing and footwear shop in Hay 16, 10th of Ramadan City. We started with a simple idea: everyone deserves to dress well at a fair price.',
+    about_p2:'We hand-pick every piece and make sure quality matches the price. Styles for every taste — classic, casual, and street.',
+    about_cta:'See What\'s New',
+    contact_address_lbl:'Address', contact_hours_lbl:'Hours', contact_phone_lbl:'Phone',
+    contact_wa_btn:'Order on WhatsApp',
+    footer_rights:'© 2026 Shubra Store — All rights reserved', footer_admin:'Owner Login',
+    login_title:'Owner Login', login_sub:'Enter your password to access the dashboard',
+    login_pass:'Password', login_btn:'Login', login_cancel:'Cancel',
+    admin_title:'Dashboard', admin_logout:'Logout',
+    admin_tab_products:'Products', admin_tab_settings:'Settings',
+    form_add_title:'Add New Product', form_edit_title:'Edit Product',
+    form_name_ar:'Name (Arabic)', form_name_en:'Name (English)',
+    form_price:'Price (EGP)', form_old_price:'Old Price', form_category:'Category',
+    form_sizes:'Sizes (comma separated)', form_image:'Image URL', form_upload:'Or upload from device',
+    form_preview:'Image Preview', form_desc_ar:'Description (Arabic)', form_desc_en:'Description (English)',
+    form_offer:'Show in Offers', form_add_btn:'Add Product', form_update_btn:'Update Product', form_reset:'Clear',
+    list_title:'Current Products',
+    settings_title:'Store Settings', settings_whatsapp:'WhatsApp number (international, no +)',
+    settings_phone:'Display phone', settings_address_ar:'Address (Arabic)', settings_address_en:'Address (English)',
+    settings_hours_ar:'Hours (Arabic)', settings_hours_en:'Hours (English)',
+    settings_pass:'Dashboard password', settings_save:'Save Settings', settings_saved:'Settings saved ✓',
+    empty_products:'No products in this category yet.', empty_offers:'No offers right now — stay tuned.',
+    order_btn:'Order on WhatsApp', badge_offer:'SALE', currency:'EGP',
+    confirm_delete:'Are you sure you want to delete this product?', login_err:'Wrong password', saved:'Saved ✓'
+  }
+};
+
+/* ---------- STATE ---------- */
+const state = {
+  lang: localStorage.getItem(LS_L) || 'ar',
+  products: [],
+  settings: {},
+  filter: 'all',
+  editingId: null,
+  admin: sessionStorage.getItem(SS_A) === '1',
+  uploadedImage: ''
+};
+
+/* ---------- HELPERS ---------- */
+const $ = s => document.querySelector(s);
+const $$ = s => document.querySelectorAll(s);
+const t = k => (I18N[state.lang] && I18N[state.lang][k]) || I18N.ar[k] || k;
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+function loadState() {
+  try { state.products = JSON.parse(localStorage.getItem(LS_P)) || DEFAULT_PRODUCTS.slice(); }
+  catch(e) { state.products = DEFAULT_PRODUCTS.slice(); }
+  if (!state.products.length) state.products = DEFAULT_PRODUCTS.slice();
+
+  try { state.settings = Object.assign({}, DEFAULT_SETTINGS, JSON.parse(localStorage.getItem(LS_S)) || {}); }
+  catch(e) { state.settings = Object.assign({}, DEFAULT_SETTINGS); }
+}
+function saveProducts() { localStorage.setItem(LS_P, JSON.stringify(state.products)); }
+function saveSettings() { localStorage.setItem(LS_S, JSON.stringify(state.settings)); }
+function uid() { return 'p' + Date.now().toString(36) + Math.random().toString(36).slice(2,6); }
+
+/* ---------- LANGUAGE ---------- */
+function applyLang() {
+  const ar = state.lang === 'ar';
+  document.documentElement.lang = state.lang;
+  document.documentElement.dir = ar ? 'rtl' : 'ltr';
+  document.body.dir = ar ? 'rtl' : 'ltr';
+  $('#langBtn').textContent = ar ? 'EN' : 'عربي';
+
+  // static texts
+  $$('[data-i18n]').forEach(el => {
+    const k = el.dataset.i18n;
+    if (I18N[state.lang][k] !== undefined) el.textContent = I18N[state.lang][k];
+  });
+
+  renderContact();
+  renderProducts();
+  renderOffers();
+  renderAdminList();
+  fillSettingsForm();
+}
+function toggleLang() {
+  state.lang = state.lang === 'ar' ? 'en' : 'ar';
+  localStorage.setItem(LS_L, state.lang);
+  applyLang();
+}
+
+/* ---------- PUBLIC RENDER ---------- */
+function waLink(name, price) {
+  const num = (state.settings.whatsapp || '').replace(/\D/g,'');
+  const cur = t('currency');
+  const msg = state.lang === 'en'
+    ? `Hello, I'd like to order: ${name} — ${price} ${cur}`
+    : `مرحبًا، عايز أطلب: ${name} — ${price} ${cur}`;
+  return `https://wa.me/${num}?text=${encodeURIComponent(msg)}`;
+}
+
+function cardHTML(p) {
+  const en = state.lang === 'en';
+  const name = en ? (p.nameEn || p.nameAr) : (p.nameAr || p.nameEn);
+  const desc = en ? (p.descEn || '') : (p.descAr || '');
+  const cur = t('currency');
+  const img = p.image || `https://picsum.photos/seed/${p.id}/600/800`;
+  const old = p.oldPrice && Number(p.oldPrice) > Number(p.price)
+    ? `<span class="price-old">${p.oldPrice} ${cur}</span>` : '';
+  return `
+  <article class="card">
+    <div class="card-img" style="background-image:url('${esc(img)}')">
+      ${p.isOffer ? `<span class="badge">${t('badge_offer')}</span>` : ''}
+    </div>
+    <div class="card-body">
+      <h3 class="card-title">${esc(name)}</h3>
+      ${desc ? `<p class="card-desc">${esc(desc)}</p>` : ''}
+      ${p.sizes ? `<p class="card-sizes">${esc(p.sizes)}</p>` : ''}
+      <div class="card-price">
+        <span class="price">${p.price} ${cur}</span>${old}
+      </div>
+      <a class="btn-order" href="${waLink(name, p.price)}" target="_blank" rel="noopener">${t('order_btn')}</a>
+    </div>
+  </article>`;
+}
+
+function renderProducts() {
+  const grid = $('#productGrid');
+  const list = state.products.filter(p => state.filter === 'all' || p.category === state.filter);
+  grid.innerHTML = list.length ? list.map(cardHTML).join('')
+    : `<p class="empty">${t('empty_products')}</p>`;
+}
+
+function renderOffers() {
+  const grid = $('#offersGrid');
+  const list = state.products.filter(p => p.isOffer);
+  grid.innerHTML = list.length ? list.map(cardHTML).join('')
+    : `<p class="empty">${t('empty_offers')}</p>`;
+}
+
+function renderContact() {
+  const en = state.lang === 'en';
+  $('#contactAddress').textContent = en ? state.settings.addressEn : state.settings.addressAr;
+  $('#contactHours').textContent = en ? state.settings.hoursEn : state.settings.hoursAr;
+  $('#contactPhone').textContent = state.settings.phone;
+  const num = (state.settings.whatsapp||'').replace(/\D/g,'');
+  $('#contactWaBtn').href = `https://wa.me/${num}`;
+}
+
+/* ---------- ADMIN LOGIN ---------- */
+function openLogin() {
+  if (state.admin) { openAdmin(); return; }
+  $('#passInput').value = '';
+  $('#loginErr').textContent = '';
+  $('#loginModal').classList.add('open');
+  setTimeout(() => $('#passInput').focus(), 50);
+}
+function closeLogin() { $('#loginModal').classList.remove('open'); }
+function tryLogin() {
+  if ($('#passInput').value === state.settings.password) {
+    state.admin = true;
+    sessionStorage.setItem(SS_A, '1');
+    closeLogin();
+    openAdmin();
+  } else {
+    $('#loginErr').textContent = t('login_err');
+  }
+}
+function openAdmin() {
+  $('#adminPanel').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  fillSettingsForm();
+  renderAdminList();
+}
+function closeAdmin() {
+  $('#adminPanel').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function logout() {
+  state.admin = false;
+  sessionStorage.removeItem(SS_A);
+  closeAdmin();
+}
+
+/* ---------- ADMIN: PRODUCTS ---------- */
+function renderAdminList() {
+  const wrap = $('#adminList');
+  if (!wrap) return;
+  if (!state.products.length) { wrap.innerHTML = `<p class="empty">${t('empty_products')}</p>`; return; }
+  wrap.innerHTML = state.products.map(p => {
+    const img = p.image || `https://picsum.photos/seed/${p.id}/600/800`;
+    const name = state.lang === 'en' ? (p.nameEn || p.nameAr) : (p.nameAr || p.nameEn);
+    return `
+    <div class="admin-item">
+      <div class="admin-thumb" style="background-image:url('${esc(img)}')"></div>
+      <div class="admin-item-info">
+        <b>${esc(name)}</b>
+        <small>${p.price} ${t('currency')}${p.isOffer ? ' · ' + t('badge_offer') : ''}</small>
+      </div>
+      <div class="admin-item-actions">
+        <button class="icon-btn" data-edit="${p.id}" title="Edit">✎</button>
+        <button class="icon-btn danger" data-del="${p.id}" title="Delete">🗑</button>
+      </div>
+    </div>`;
+  }).join('');
+
+  wrap.querySelectorAll('[data-edit]').forEach(b => b.onclick = () => startEdit(b.dataset.edit));
+  wrap.querySelectorAll('[data-del]').forEach(b => b.onclick = () => {
+    if (confirm(t('confirm_delete'))) {
+      state.products = state.products.filter(x => x.id !== b.dataset.del);
+      saveProducts(); renderProducts(); renderOffers(); renderAdminList();
+    }
+  });
+}
+
+function startEdit(id) {
+  const p = state.products.find(x => x.id === id);
+  if (!p) return;
+  state.editingId = id;
+  $('#editId').value = id;
+  $('#f_nameAr').value = p.nameAr || '';
+  $('#f_nameEn').value = p.nameEn || '';
+  $('#f_price').value = p.price ?? '';
+  $('#f_oldPrice').value = p.oldPrice || '';
+  $('#f_category').value = p.category || 'clothes';
+  $('#f_sizes').value = p.sizes || '';
+  $('#f_image').value = p.image || '';
+  $('#f_descAr').value = p.descAr || '';
+  $('#f_descEn').value = p.descEn || '';
+  $('#f_isOffer').checked = !!p.isOffer;
+  state.uploadedImage = '';
+  $('#f_file').value = '';
+  updatePreview(p.image || '');
+  $('#formTitle').textContent = t('form_edit_title');
+  $('#formSubmit').textContent = t('form_update_btn');
+  $('#adminPanel').scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function resetForm() {
+  state.editingId = null;
+  state.uploadedImage = '';
+  $('#productForm').reset();
+  $('#editId').value = '';
+  updatePreview('');
+  $('#formTitle').textContent = t('form_add_title');
+  $('#formSubmit').textContent = t('form_add_btn');
+}
+
+function updatePreview(src) {
+  const el = $('#imgPreview');
+  if (src) {
+    el.style.backgroundImage = `url('${src}')`;
+    el.textContent = '';
+  } else {
+    el.style.backgroundImage = '';
+    el.textContent = t('form_preview');
+  }
+}
+
+function handleSubmit(e) {
+  e.preventDefault();
+  const data = {
+    nameAr: $('#f_nameAr').value.trim(),
+    nameEn: $('#f_nameEn').value.trim(),
+    price: Number($('#f_price').value) || 0,
+    oldPrice: Number($('#f_oldPrice').value) || 0,
+    category: $('#f_category').value,
+    sizes: $('#f_sizes').value.trim(),
+    image: state.uploadedImage || $('#f_image').value.trim(),
+    descAr: $('#f_descAr').value.trim(),
+    descEn: $('#f_descEn').value.trim(),
+    isOffer: $('#f_isOffer').checked
+  };
+  if (!data.nameAr) return;
+
+  if (state.editingId) {
+    const i = state.products.findIndex(x => x.id === state.editingId);
+    if (i > -1) state.products[i] = { ...state.products[i], ...data };
+  } else {
+    state.products.unshift({ id: uid(), ...data });
+  }
+  saveProducts();
+  renderProducts(); renderOffers(); renderAdminList();
+  resetForm();
+  const msg = $('#saveMsg');
+  msg.textContent = t('saved');
+  setTimeout(() => msg.textContent = '', 2200);
+}
+
+/* ---------- ADMIN: SETTINGS ---------- */
+function fillSettingsForm() {
+  if (!$('#s_whatsapp')) return;
+  $('#s_whatsapp').value = state.settings.whatsapp || '';
+  $('#s_phone').value = state.settings.phone || '';
+  $('#s_addressAr').value = state.settings.addressAr || '';
+  $('#s_addressEn').value = state.settings.addressEn || '';
+  $('#s_hoursAr').value = state.settings.hoursAr || '';
+  $('#s_hoursEn').value = state.settings.hoursEn || '';
+  $('#s_pass').value = state.settings.password || '';
+}
+function saveSettingsForm() {
+  state.settings.whatsapp = $('#s_whatsapp').value.trim();
+  state.settings.phone = $('#s_phone').value.trim();
+  state.settings.addressAr = $('#s_addressAr').value.trim();
+  state.settings.addressEn = $('#s_addressEn').value.trim();
+  state.settings.hoursAr = $('#s_hoursAr').value.trim();
+  state.settings.hoursEn = $('#s_hoursEn').value.trim();
+  state.settings.password = $('#s_pass').value || DEFAULT_SETTINGS.password;
+  saveSettings();
+  renderContact();
+  renderProducts(); renderOffers();
+  const m = $('#settingsMsg');
+  m.textContent = t('settings_saved');
+  setTimeout(() => m.textContent = '', 2200);
+}
+
+/* ---------- INIT ---------- */
+function init() {
+  loadState();
+  applyLang();
+
+  // language
+  $('#langBtn').onclick = toggleLang;
+
+  // filters
+  $$('#filters .chip').forEach(btn => {
+    btn.onclick = () => {
+      $$('#filters .chip').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      state.filter = btn.dataset.filter;
+      renderProducts();
+    };
+  });
+
+  // owner login
+  $('#ownerLoginBtn').onclick = openLogin;
+  $('#loginCancel').onclick = closeLogin;
+  $('#loginSubmit').onclick = tryLogin;
+  $('#passInput').addEventListener('keydown', e => { if (e.key === 'Enter') tryLogin(); });
+  $('#loginModal').addEventListener('click', e => { if (e.target.id === 'loginModal') closeLogin(); });
+
+  // admin panel
+  $('#adminLogout').onclick = logout;
+
+  // admin tabs
+  $$('.admin-tab').forEach(tab => {
+    tab.onclick = () => {
+      $$('.admin-tab').forEach(x => x.classList.remove('active'));
+      tab.classList.add('active');
+      const isProducts = tab.dataset.tab === 'products';
+      $('#tab-products').classList.toggle('hidden', !isProducts);
+      $('#tab-settings').classList.toggle('hidden', isProducts);
+    };
+  });
+
+  // product form
+  $('#productForm').addEventListener('submit', handleSubmit);
+  $('#formReset').onclick = resetForm;
+  $('#f_image').addEventListener('input', e => {
+    if (!state.uploadedImage) updatePreview(e.target.value.trim());
+  });
+  $('#f_file').addEventListener('change', e => {
+    const f = e.target.files[0];
+    if (!f) return;
+    const reader = new FileReader();
+    reader.onload = ev => {
+      state.uploadedImage = ev.target.result;
+      $('#f_image').value = '';
+      updatePreview(state.uploadedImage);
+    };
+    reader.readAsDataURL(f);
+  });
+
+  // settings
+  $('#settingsSave').onclick = saveSettingsForm;
+}
+
+document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+  </html>
